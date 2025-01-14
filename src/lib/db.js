@@ -3,12 +3,9 @@ import { env } from '$env/dynamic/private';
 const { Pool } = pg;
 
 export const pool = new Pool({
-    user: env.PRIVATE_POSTGRES_USER,
-    host: env.PRIVATE_POSTGRES_HOST,
-    database: env.PRIVATE_POSTGRES_DB,
-    password: env.PRIVATE_POSTGRES_PASSWORD,
-    port: env.PRIVATE_POSTGRES_PORT,
+    connectionString: env.PRIVATE_DATABASE_URL,
     ssl: {
+        require: true,
         rejectUnauthorized: false
     }
 });
