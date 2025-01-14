@@ -8,4 +8,7 @@ export const pool = new Pool({
     database: env.PRIVATE_POSTGRES_DB,
     password: env.PRIVATE_POSTGRES_PASSWORD,
     port: env.PRIVATE_POSTGRES_PORT,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
