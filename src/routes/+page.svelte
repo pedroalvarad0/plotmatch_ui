@@ -1,7 +1,6 @@
 <script>
     import Movie from '../components/Movie.svelte';
     import MovieSkeleton from '../components/MovieSkeleton.svelte';
-    import { PUBLIC_API_URL } from '$env/static/public';
 
     let searchQuery = '';
     let movies = [];
@@ -16,7 +15,7 @@
 
         try {
             isLoading = true;
-            const response = await fetch(`${PUBLIC_API_URL}search?query=${encodeURIComponent(query)}&limit=5`);
+            const response = await fetch(`/search?query=${encodeURIComponent(query)}&limit=5`);
             const data = await response.json();
             movies = data || [];
         } catch (error) {
@@ -78,7 +77,7 @@
                             genres={movie.genres}
                             overview={movie.overview}
                             release_year={movie.release_year}
-                            cast={movie.cast}
+                            cast={movie.movie_cast}
                             directors={movie.directors}
                             poster_path={movie.poster}
                         />
